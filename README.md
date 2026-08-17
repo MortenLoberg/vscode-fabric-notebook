@@ -80,8 +80,17 @@ npm run lint
 
 Press F5 in VS Code or Cursor to launch an Extension Development Host.
 
+## Install from VSIX
+
+A packaged build is at `fabric-notebook-0.1.0.vsix`. To rebuild it:
+
 ```bash
 npm run package
 ```
 
-builds a `.vsix` you can install in VS Code or Cursor with **Install from VSIX**.
+Then in VS Code or Cursor:
+
+1. Open the Command Palette (`Cmd+Shift+P`)
+2. Run **Extensions: Install from VSIX…**
+3. Select `fabric-notebook-0.1.0.vsix`
+4. Reload the window if prompted
