@@ -1,0 +1,85 @@
+{
+  "name": "fabric-notebook",
+  "displayName": "Fabric Notebook",
+  "description": "Open Microsoft Fabric notebooks in VS Code's Notebook Editor",
+  "version": "0.1.0",
+  "publisher": "mortenloberg",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mortenloberg/vscode-fabric-notebook"
+  },
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Notebooks",
+    "Data Science"
+  ],
+  "keywords": [
+    "fabric",
+    "microsoft fabric",
+    "notebook",
+    "jupyter",
+    "python",
+    "pyspark",
+    "sql"
+  ],
+  "activationEvents": [
+    "onFileSystem:fabric-notebook"
+  ],
+  "main": "./dist/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "fabric.openAsNotebook",
+        "title": "Open as Fabric Notebook",
+        "category": "Fabric"
+      }
+    ],
+    "menus": {
+      "explorer/context": [
+        {
+          "command": "fabric.openAsNotebook",
+          "when": "resourceFilename == notebook-content.py || resourceFilename == notebook-content.sql || resourceFilename == notebook-content.scala || resourceFilename == notebook-content.r",
+          "group": "navigation"
+        }
+      ],
+      "editor/title/context": [
+        {
+          "command": "fabric.openAsNotebook",
+          "when": "resourceFilename == notebook-content.py || resourceFilename == notebook-content.sql || resourceFilename == notebook-content.scala || resourceFilename == notebook-content.r"
+        }
+      ],
+      "commandPalette": [
+        {
+          "command": "fabric.openAsNotebook",
+          "when": "resourceExtname == .py || resourceExtname == .sql || resourceExtname == .scala || resourceExtname == .r"
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run build",
+    "build": "esbuild ./src/extension.ts --bundle --outfile=dist/extension.js --external:vscode --format=cjs --platform=node --sourcemap",
+    "watch": "npm run build -- --watch",
+    "lint": "eslint src",
+    "lint:fix": "eslint src --fix",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:coverage": "vitest run --coverage",
+    "package": "vsce package"
+  },
+  "devDependencies": {
+    "@types/node": "^20.10.0",
+    "@types/vscode": "^1.85.0",
+    "@vitest/coverage-v8": "^4.0.15",
+    "@vscode/vsce": "^3.7.1",
+    "esbuild": "^0.27.2",
+    "eslint": "^9.39.2",
+    "typescript": "^5.3.2",
+    "typescript-eslint": "^8.50.0",
+    "vitest": "^4.0.15"
+  }
+}

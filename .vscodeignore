@@ -1,0 +1,28 @@
+# Source files (we ship compiled dist/)
+src/
+*.ts
+!dist/**/*.js
+
+# Config files
+.vscode/
+.eslintrc.json
+tsconfig.json
+tsconfig.eslint.json
+vitest.config.mts
+eslint.config.mjs
+
+# Development
+node_modules/
+coverage/
+*.vsix
+fixtures/
+
+# Git
+.git/
+.gitignore
+
+# Misc
+*.md
+!README.md
+!CHANGELOG.md
+.DS_Store
